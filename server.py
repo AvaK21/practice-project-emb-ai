@@ -22,10 +22,10 @@ def sent_analyzer():
     # TODO
     text_to_analyze = request.args.get('textToAnalyze')
 
-    tresponse = sentiment_analyzer(text_to_analyze)
-    label_score = sent_analyzer(text_to_analyze)
-    label = label_score['label'].split('_')[1]
-    score = label_score['score']
+    #tresponse = sentiment_analyzer(text_to_analyze)
+    response = sentiment_analyzer(text_to_analyze)
+    label = response['label'].split('_')[1]
+    score = response['score']
     return f'The given text has been identified as {label} with a score of {score}.'
 
 @app.route("/")
@@ -38,4 +38,4 @@ def render_index_page():
 if __name__ == "__main__":
     ''' This functions executes the flask app and deploys it on localhost:5000
     '''#TODO
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5002)
